@@ -390,8 +390,11 @@ if st.button('Predict Price'):
     r_type=input_df['room_type'][0]
     p_type=input_df['property_type'][0]
     district=input_df['NEW_DISTRICT'][0]
-    st.map(df.query("price <= @prediction+5 & price >= @prediction-5 & @r_type==room_type & @p_type==property_type & @district==NEW_DISTRICT")[["latitude", "longitude"]].dropna(how="any"))
 
+    df_son=df[(df['price'].values<=prediction+5)&(df['price'].values>=prediction-5) & (df['room_type'].values == r_type) & (df['property_type'].values == p_type) & \
+    (df['NEW_DISTRICT'].values == district)][["latitude", "longitude"]]
+    #df.query("price <= @prediction+5 & price >= @prediction-5 & @r_type==room_type & @p_type==property_type & @district==NEW_DISTRICT")[["latitude", "longitude"]].dropna(how="any")
+    st.map(df_son)
 
 
 
