@@ -57,7 +57,7 @@ def user_input_features():
 #Sayfaya Resim ve Başlık Ekle
 image = Image.open('WhatsApp Image 2022-06-17 at 21.07.16.jpeg')
 st.image(image,width=800)
-#st.header('MIUULBNB PRICE PREDICTION APP')
+st.header('MIUULBNB PRICE PREDICTION APP')
 
 #Seçilen Değerleri DF yapıp göster
 input_df = user_input_features()
@@ -383,22 +383,18 @@ prediction=lasso_tuned_model.predict(df_tahmin)
 #shap_values=explainer.shap_values(df_encode)
 
 st.header('Price Prediction Result')
-if st.button('Predict Price'):
-    st.write(prediction) #displayed when the button is clicked
-    st.header("Suitable Locations Based on Predicted Price,District,Room Type and Property Type")
-    # plot the slider that selects number of person died
-    r_type=input_df['room_type'][0]
-    p_type=input_df['property_type'][0]
-    district=input_df['NEW_DISTRICT'][0]
-    st.map(df.query("price <= @prediction+5 & price >= @prediction-5 & @r_type==room_type & @p_type==property_type & @district==NEW_DISTRICT")[["latitude", "longitude"]].dropna(how="any"))
+prediction
 
+#Map ekle
 
+#plotting a map with the above defined points
+#data=pd.read_csv('Unit_1_Project_Dataset.csv')
 
-
-
-
-
-
+#st.header("Price Distribution in Amsterdam Neibourhood?")
+# plot the slider that selects number of person died
+#prices = st.slider("Price of Lots", int(data["price"].min()), int(data["price"].max()))
+#bedds = st.slider("How Many Beds", int(data["beds"].min()), int(data["beds"].max()))
+#st.map(data.query("price <= @prices & beds<=@bedds")[["latitude", "longitude"]].dropna(how ="any"))
 
 
 
